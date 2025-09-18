@@ -1,0 +1,12 @@
+- name: Configuração inicial          #Nome amigável
+  hosts: all                          #Todas as VMs do inventário
+  become: true                        #Responsável pela elevação do usuario (sudo)
+  tasks:
+    - name: Atualizar pacotes         #Nome amigável
+      apt:                            #Módulo responsável pelo gerenciador de pacote
+        update_cache: yes             #sudo apt uptade
+        upgrade: dist                 #sudo apt update
+    - name: Instalar pacotes básicos  #Nome amigável
+      apt: 
+        name: [tree]             #sudo apt install tree
+        state: present
